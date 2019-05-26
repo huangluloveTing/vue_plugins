@@ -9,15 +9,13 @@ import store from './store'
 import './utils/config'
 import './assets/iconfont/iconfont.css'
 require('./components')
-import MyAlert from './plugins/alert'
+import MyDialog from './plugins/dialog'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import Loading from './plugins/loading'
 
 Vue.config.productionTip = false  
-Vue.use(MyPlugin)
-Vue.use(MyAlert)
-Vue.use(MintUI)
+Vue.use(MyDialog)
 Vue.use(Loading , {showMask:true})
 
 /* eslint-disable no-new */

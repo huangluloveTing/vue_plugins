@@ -16,8 +16,6 @@
 <script>
 
 import api from '../api/api.js'
-let Alert = () => import('../plugins/alert/alert')
-let loading = () => import('../plugins/toast/toast')
 
 export default {
     data () {
@@ -27,8 +25,7 @@ export default {
     },
 
     components: {
-      Alert,
-      loading
+      
     },
 
     created () {
@@ -38,16 +35,6 @@ export default {
     },
 
     mounted() {
-      // api.Get('info').then(res => {
-      //   console.log('======== info ========')
-      //   console.log(res)
-      // }).catch(error => {
-      //   console.log('get error occure')
-      //   for(let key in error) {
-      //     console.log('error key ' , key)
-      //     console.log(error[key])
-      //   }
-      // })
     },
 
     methods: {
@@ -70,15 +57,16 @@ export default {
         this.$router.push('/setting')
       },
       confirm() {
-        this.$alert.confirm('tisp' , 'sfahfa')
+        this.$dialog.confirm('tisp' , 'sfahfa')
       },
       alert() {
-        this.$alert.alert('tisp' , 'sfahfa')
+        this.$dialog.alert('tisp' , 'sfahfa')
       },
       loading() {
           this.$loading.show('拼命加载中...')
           setTimeout(() => {
               this.$loading.hidden()
+              this.$dialog.alert('提示' , '加载完毕！')
           }, 1000);
       }
     }

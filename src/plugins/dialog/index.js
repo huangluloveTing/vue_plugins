@@ -1,17 +1,17 @@
-import AlertComponent from './alert'
+import DialogComponent from './dialog.vue'
 
-let Alert = {}
+let Dialog = {}
 
-let myAlert = function (Vue , options) {
+let install = function (Vue , options) {
     let div = document.createElement('div')
     div.setAttribute('id' , 'alert-root')
     document.body.appendChild(div)
-    let AlertConstructor = Vue.extend(AlertComponent)
-    const instance = new AlertConstructor()
+    let DialogConstructor = Vue.extend(DialogComponent)
+    const instance = new DialogConstructor()
     console.log(instance)
     instance.$mount('#alert-root')
     
-    let alertHandle = {
+    let dialogHandle = {
         confirm(title , message , cb) {
             instance.confirm(title , message , cb)
         },
@@ -19,9 +19,9 @@ let myAlert = function (Vue , options) {
             instance.alert(title , message)
         }
     }
-    Vue.prototype.$alert = alertHandle
+    Vue.prototype.$dialog = dialogHandle
 }
 
-Alert.install = myAlert;
+Dialog.install = install;
 
-export default Alert
+export default Dialog
