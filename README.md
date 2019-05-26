@@ -229,6 +229,151 @@
 >> vue项目中使用，直接就通过use 方法使用插件
 2. loading插件
 
+3. 在移动端项目中，一般的页面主要有三部分组成，分别是头部导航栏，中间内容，底部导航栏，所以一般封装了移动端的 页面组件，下面是我的简单封装，page组件的封装
+>>1. page 组件
+```
+<!-- page 页面的封装，包含header 和 body -->
+<template>
+    <div class="page">
+        <naviheader v-if="showHeader" :title="title" :showBack='showBack'>
+            <div slot="rightitems"><slot name="rightActions"></slot></div>
+        </naviheader>
+        <div class="center">
+            <slot name="body" />
+        </div>
+        <div class="bottom">
+            <slot name="bottom" />
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    data () {
+      return {
+      };
+    },
+
+    props:{
+        title:{
+            type:String,
+            default:''
+        },
+        showHeader:{
+            type:Boolean,
+            default:false
+        },
+        showBack:{
+            type:Boolean,
+            default:false
+        }
+    },
+
+    components: {
+    },
+
+    created () {
+        console.log('=== page ====')
+        console.log(this.pageTitle)
+    },
+
+    computed: {
+    },
+
+    mounted() {
+    },
+
+    methods: {
+    }
+}
+</script>
+<style lang="scss" scoped>
+    .page {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-flow: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        .center {
+            flex: 1;
+            overflow: auto;
+        }
+    }
+</style>
+```
+>>2. naviheader 组件
+```
+<template>
+    <div class="navi-header">
+        <i class="icon iconfont icon-left left" v-if="showBack" @click="leftBack"></i>
+        <div class="title"><slot name='title'> <span> {{title}}  </span> </slot></div>
+        <slot name='rightitems'></slot>
+    </div>
+</template>
+
+<script>
+export default {
+    data () {
+      return {
+      };
+    },
+
+    props:{
+        title:{
+            type:String,
+            default: '标题'
+        },
+        showBack:{type:Boolean , default: false}
+    },
+    
+    components: {
+    },
+
+    created () {
+    },
+
+    computed: {
+    },
+
+    mounted() {
+        console.log(' header ==')
+        console.log(this.title)
+    },
+
+    methods: {
+        leftBack() {
+            console.log('back')
+            this.$router.back()
+        }
+    }
+}
+</script>
+<style lang="scss" scoped>
+    .navi-header {
+        position: relative;
+        padding: r_px(10) r_px(8);
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        z-index: 999;
+    }
+    .title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50% , -50%,0);
+        font-size: r_px(20);
+        color: #333333;
+
+    }
+    .left {
+        font-size: r_px(17)
+    }
+</style>
+```
 
 # 待续
 ## Build Setup
