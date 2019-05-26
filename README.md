@@ -5,7 +5,7 @@
 *有许多指令和*
 
 ## vue 项目自定义插件
-- dialog 插件用法
+1. dialog 插件源码及分析
 >>dialog的视图样式层
 ```
     <!--  -->
@@ -226,7 +226,11 @@
     Dialog.install = install;
     export default Dialog
 ```
+>> vue项目中使用，直接就通过use 方法使用插件
+2. loading插件
 
+
+# 待续
 ## Build Setup
 
 ``` bash
