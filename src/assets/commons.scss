@@ -1,0 +1,15 @@
+
+$size_width: 375;
+$c_primary1: #ff9421;
+$c_primary2: #ff5b0f;
+$c_primary_bg1: #FAFAFA;
+$c_primary_bg2: #F5F5F5;
+
+$c_primary_main_text: #333333;
+$c_primary_title_text: #666666;
+$c_primary_item_text: #161616;
+$c_primary_seprate: #DDDDDD;
+
+@function r_px($px) {
+    @return $px / $size_width * 100vw;
+}
