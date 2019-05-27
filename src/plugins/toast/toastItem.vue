@@ -39,15 +39,15 @@ export default {
     .toast-item {
         background: $toast_bg;
         color: $toast_text_color;
-        padding: 10px 10px;
+        padding: 8px 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-flow: row nowrap;
-        margin: 8px auto;
+        margin: 5px auto;
         border-radius: 5px;
         line-height: 100%;
-        font-size: 20px;
+        font-size: r_px(16);
         span {
             // background: #fff;
             display: inline-block;

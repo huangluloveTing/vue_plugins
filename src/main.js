@@ -18,7 +18,7 @@ import Toast from './plugins/toast'
 Vue.config.productionTip = false  
 Vue.use(MyDialog)
 Vue.use(Loading , {showMask:true})
-Vue.use(Toast , {position : 'bottom' , duration:10000})
+Vue.use(Toast , {position : 'top' , duration:20000})
 
 /* eslint-disable no-new */
 new Vue({

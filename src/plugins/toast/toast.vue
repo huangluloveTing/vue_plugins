@@ -3,7 +3,7 @@
     <div class="toast-container" :style="visible ? 'display:block' : 'display:none'" :class="toastPostion">
         <div class="toast-content">
             <template v-for="(item , index) in toasts">
-                <item :key="index+ ''" :title='item.title + item.key'>
+                <item :key="index+ ''" :title='item.title'>
                     <i v-if="item.type == 'success'" class="icon iconfont icon-pxduoxuanxuanzhong icon-right" slot="header-icon"/>
                     <i v-else-if="item.type == 'fail'" class="icon iconfont icon-chaSVG icon-right" slot="header-icon"/>
                     <i v-else-if="item.type == 'warn'" class="icon iconfont icon-gantanhaoSVG icon-right" slot="header-icon"/>
@@ -15,9 +15,6 @@
 
 <script>
 
-const TOAST_TYPE_SUCCESS = 'success' // 成功
-const TOAST_TYPE_FAILED = 'fail'   // 失败
-const TOAST_TYPE_WARN = 'warn'       // 警告
 const TOAST_DURATION = 3000;
 
 // 所在位置
@@ -97,7 +94,7 @@ export default {
         position: fixed;
         .toast-content {
             display: flex;
-            flex-flow: column-reverse nowrap;
+            flex-flow: column nowrap;
             align-items: center;
         }
     }
