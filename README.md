@@ -6,7 +6,7 @@
 
 ## vue 项目自定义插件
 1. dialog 插件源码及分析
->>dialog的视图样式层
+>dialog的视图样式层
 ```
     <!--  -->
     <template>
@@ -193,7 +193,7 @@
     </style>
 ```
 
->>插件的关键用法
+>插件的关键用法
 ```
     // 导入dialog 的组件
     import DialogComponent from './dialog.vue'
@@ -226,11 +226,11 @@
     Dialog.install = install;
     export default Dialog
 ```
->> vue项目中使用，直接就通过use 方法使用插件
+> vue项目中使用，直接就通过use 方法使用插件
 2. loading插件
 
 3. 在移动端项目中，一般的页面主要有三部分组成，分别是头部导航栏，中间内容，底部导航栏，所以一般封装了移动端的 页面组件，下面是我的简单封装，page组件的封装
->>1. page 组件
+>1. page 组件
 ```
 <!-- page 页面的封装，包含header 和 body -->
 <template>
@@ -302,7 +302,7 @@ export default {
     }
 </style>
 ```
->>2. naviheader 组件
+>2. naviheader 组件
 ```
 <template>
     <div class="navi-header">

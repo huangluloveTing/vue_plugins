@@ -13,10 +13,12 @@ import MyDialog from './plugins/dialog'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import Loading from './plugins/loading'
+import Toast from './plugins/toast'
 
 Vue.config.productionTip = false  
 Vue.use(MyDialog)
 Vue.use(Loading , {showMask:true})
+Vue.use(Toast , {position : 'bottom' , duration:10000})
 
 /* eslint-disable no-new */
 new Vue({

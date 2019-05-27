@@ -9,6 +9,9 @@
       <div style="background:#f7f;width:20vw;height:10vw" @click="confirm"> confirm </div>
       <div style="background:#f6f;width:20vw;height:10vw" @click="alert"> alert </div>
       <div style="background:#f6f;width:20vw;height:10vw" @click="loading"> loading </div>
+      <div style="background:#f8f;width:20vw;height:10vw" @click="toast"> success </div>
+      <div style="background:#f9f;width:20vw;height:10vw" @click="toast_warn"> warn </div>
+      <div style="background:#f0f;width:20vw;height:10vw" @click="toast_fail"> fail </div>
       <!-- <loading /> -->
     </div>
 </template>
@@ -68,6 +71,15 @@ export default {
               this.$loading.hidden()
               this.$dialog.alert('提示' , '加载完毕！')
           }, 1000);
+      },
+      toast() {
+        this.$toast.success('12333' , 1000)
+      },
+      toast_warn() {
+        this.$toast.warn('哈哈哈哈哈哈' , 3000)
+      },
+      toast_fail(){
+        this.$toast.fail('哈哈哈哈哈哈' , 5000)
       }
     }
 }
