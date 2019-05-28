@@ -280,6 +280,14 @@
         <div class="bottom">
             <slot name="bottom" />
         </div>
+        <!-- 左抽屉 -->
+        <div :class="{'left-drawer':true,'drawer-left-show':this.leftDrawer}">
+            <slot name="leftDrawer" />
+        </div>
+        <!-- 右抽屉 -->
+        <div :class="{'right-drawer':true,'drawer-right-show':this.rightDrawer}">
+            <slot name="rightDrawer" />
+        </div>
     </div>
 </template>
 
@@ -302,6 +310,14 @@ export default {
         showBack:{
             type:Boolean,
             default:false
+        },
+        leftDrawer:{
+            type:Boolean,
+            default:false
+        },
+        rightDrawer:{
+            type:Boolean,
+            default:false
         }
     },
 
@@ -309,7 +325,6 @@ export default {
     },
 
     created () {
-        console.log('=== page ====')
         console.log(this.pageTitle)
     },
 
@@ -334,6 +349,24 @@ export default {
         .center {
             flex: 1;
             overflow: auto;
+        }
+        .left-drawer {
+            position: fixed;
+            top: 0;bottom: 0;right: 100%;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+        }
+        .drawer-left-show {
+            transform: translateX(100%)
+        }
+        .right-drawer {
+            position: fixed;
+            top: 0;bottom: 0;left: 100%;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+        }
+        .drawer-right-show {
+            transform: translateX(-100%)
         }
     }
 </style>
