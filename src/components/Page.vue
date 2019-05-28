@@ -11,7 +11,7 @@
             <slot name="bottom" />
         </div>
         <!-- 左抽屉 -->
-        <div :class="{'left-drawer':true,'drawer-show':this.leftDrawer}">
+        <div :class="{'left-drawer':true,'drawer-left-show':this.leftDrawer}">
             <slot name="leftDrawer" />
         </div>
         <!-- 右抽屉 -->
@@ -87,7 +87,7 @@ export default {
             transition: all 0.3s ease-in-out;
             z-index: 999;
         }
-        .drawer-show {
+        .drawer-left-show {
             transform: translateX(100%)
         }
         .right-drawer {
