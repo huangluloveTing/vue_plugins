@@ -1,9 +1,13 @@
 <template>
-    <page title="订单" showHeader showBack :showDrawer='drawer'>
-        <i class="icon iconfont icon-mendiangerenzhongxinshezhi" slot="rightActions" @click="showDrawer" />
-        <div slot="drawer">
+    <page title="订单" showHeader showBack :leftDrawer='drawer' :rightDrawer='rightDrawer'>
+        <div slot="rightActions">
+            <i class="icon iconfont icon-mendiangerenzhongxinshezhi"  @click="showDrawer" />
+            <i class="icon iconfont icon-mendiangerenzhongxinshezhi"  @click="showRightDrawer" />
+        </div>
+        <div slot="leftDrawer">
             <div style="background:red;height:100vh;width:200px"></div>
         </div>
+        <div slot="rightDrawer"><div style="background:red;height:100vh;width:200px"></div></div>
         <div slot="body" class="list-page">
             <tab :titles='titles' @selectedItem='selectedItem'></tab>
             <div class="list-content" ref="orderWrapper">
@@ -68,7 +72,8 @@ export default {
           lists : ['','','','','','','','','','','',''],
           comms:['','',''],
           handles:['去评价' , '查看详情' ,'再次购买'],
-          drawer:false
+          drawer:false,
+          rightDrawer:false
       };
     },
 
@@ -88,6 +93,9 @@ export default {
         },
         showDrawer() {
             this.drawer = !this.drawer;
+        },
+        showRightDrawer(){
+            this.rightDrawer = !this.rightDrawer
         }
     }
 }

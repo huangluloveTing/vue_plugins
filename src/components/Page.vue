@@ -10,8 +10,13 @@
         <div class="bottom">
             <slot name="bottom" />
         </div>
-        <div :class="{'drawer':true,'drawer-show':this.showDrawer}">
-            <slot name="drawer" />
+        <!-- 左抽屉 -->
+        <div :class="{'left-drawer':true,'drawer-show':this.leftDrawer}">
+            <slot name="leftDrawer" />
+        </div>
+        <!-- 右抽屉 -->
+        <div :class="{'right-drawer':true,'drawer-right-show':this.rightDrawer}">
+            <slot name="rightDrawer" />
         </div>
     </div>
 </template>
@@ -36,7 +41,11 @@ export default {
             type:Boolean,
             default:false
         },
-        showDrawer:{
+        leftDrawer:{
+            type:Boolean,
+            default:false
+        },
+        rightDrawer:{
             type:Boolean,
             default:false
         }
@@ -51,12 +60,6 @@ export default {
     },
 
     computed: {
-        drawerClass() {
-            return {
-                'drawer':true,
-                'drawer-show':this.showDrawer
-            }
-        }
     },
 
     mounted() {
@@ -78,7 +81,7 @@ export default {
             flex: 1;
             overflow: auto;
         }
-        .drawer {
+        .left-drawer {
             position: fixed;
             top: 0;bottom: 0;right: 100%;
             transition: all 0.3s ease-in-out;
@@ -86,6 +89,15 @@ export default {
         }
         .drawer-show {
             transform: translateX(100%)
+        }
+        .right-drawer {
+            position: fixed;
+            top: 0;bottom: 0;left: 100%;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+        }
+        .drawer-right-show {
+            transform: translateX(-100%)
         }
     }
 </style>
