@@ -10,6 +10,9 @@
         <div class="bottom">
             <slot name="bottom" />
         </div>
+        <div :class="{'drawer':true,'drawer-show':this.showDrawer}">
+            <slot name="drawer" />
+        </div>
     </div>
 </template>
 
@@ -32,6 +35,10 @@ export default {
         showBack:{
             type:Boolean,
             default:false
+        },
+        showDrawer:{
+            type:Boolean,
+            default:false
         }
     },
 
@@ -44,6 +51,12 @@ export default {
     },
 
     computed: {
+        drawerClass() {
+            return {
+                'drawer':true,
+                'drawer-show':this.showDrawer
+            }
+        }
     },
 
     mounted() {
@@ -64,6 +77,15 @@ export default {
         .center {
             flex: 1;
             overflow: auto;
+        }
+        .drawer {
+            position: fixed;
+            top: 0;bottom: 0;right: 100%;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+        }
+        .drawer-show {
+            transform: translateX(100%)
         }
     }
 </style>

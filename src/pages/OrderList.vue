@@ -1,5 +1,9 @@
 <template>
-    <page title="订单" showHeader showBack>
+    <page title="订单" showHeader showBack :showDrawer='drawer'>
+        <i class="icon iconfont icon-mendiangerenzhongxinshezhi" slot="rightActions" @click="showDrawer" />
+        <div slot="drawer">
+            <div style="background:red;height:100vh;width:200px"></div>
+        </div>
         <div slot="body" class="list-page">
             <tab :titles='titles' @selectedItem='selectedItem'></tab>
             <div class="list-content" ref="orderWrapper">
@@ -63,7 +67,8 @@ export default {
           titles:["全部" ,'待付款' ,'配送中' , '待自提'],
           lists : ['','','','','','','','','','','',''],
           comms:['','',''],
-          handles:['去评价' , '查看详情' ,'再次购买']
+          handles:['去评价' , '查看详情' ,'再次购买'],
+          drawer:false
       };
     },
 
@@ -80,6 +85,9 @@ export default {
     methods: {
         selectedItem(index) {
             console.log('tap index ' + index)
+        },
+        showDrawer() {
+            this.drawer = !this.drawer;
         }
     }
 }
