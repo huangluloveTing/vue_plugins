@@ -4,6 +4,39 @@
 *vue是模板语法框架*
 *有许多指令和*
 
+# 指令
+1. v-model其实是一个语法糖
+```
+    <input v-model='input' />
+    <!-- 等价于 -->
+    <input :value='value' @input='this.$emit('input', $event.target.value) />
+```
+--------
+# require.context() 自动实现Vuex的注入
+```
+    import Vuex from 'vuex'
+    import Vue from 'vue'
+    Vue.use(Vuex)
+
+    let reqiureContext = require.context('./modules' , false , /\.js$/)
+
+    let modules = {}
+
+    reqiureContext.keys().forEach(key => {
+        let name = key.slice(2, -3) // 得到 state的名称
+        let moduleConfig = reqiureContext(key).default || reqiureContext(key)
+        modules[name] = moduleConfig
+    })
+
+    export default new Vuex.Store({
+        modules:{
+            ...modules
+        }
+    })
+```
+这样写，不用每次更新了新增了store就要写代码，通过 webpack 自动帮我们实现了store 的注入
+-------
+
 ## vue 项目自定义插件
 1. dialog 插件源码及分析
 >dialog的视图样式层

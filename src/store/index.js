@@ -8,7 +8,6 @@ let modules = {}
 
 reqiureContext.keys().forEach(key => {
     let name = key.slice(2, -3)
-    console.log(name)
     let moduleConfig = reqiureContext(key).default
     modules[name] = moduleConfig
 })

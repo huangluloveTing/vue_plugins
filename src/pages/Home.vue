@@ -13,6 +13,7 @@
       <div style="background:#f9f;width:20vw;height:10vw" @click="toast_warn"> warn </div>
       <div style="background:#f0f;width:20vw;height:10vw" @click="toast_fail"> fail </div>
       <!-- <loading /> -->
+      <doublebind v-model='god'></doublebind>
     </div>
 </template>
 
@@ -23,7 +24,8 @@ import api from '../api/api.js'
 export default {
     data () {
       return {
-        input:''
+        input:'',
+        god:'good'
       };
     },
 
@@ -36,10 +38,11 @@ export default {
 
     computed: {
     },
-
-    mounted() {
+    watch:{
+      god(v , ol) {
+        console.log('good change' + 'new : ' + v + '---> old : ' + ol)
+      }
     },
-
     methods: {
       toDetail() {
         this.$router.push('/detail')
