@@ -11,6 +11,53 @@
     <!-- 等价于 -->
     <input :value='value' @input='this.$emit('input', $event.target.value) />
 ```
+> v-model 如上面是一种 语法糖，等价于 属性 value 和 input事件，如果需要重新绑定 其他的属性名或者 事件，可以像下面这种做，在组件model中指定 prop 和event
+```
+    <!-- customModel.vue  组件-->
+
+    <template>
+        <div>
+            <h1> v-model 自定义 事件</h1>
+            <h2> {{value}} </h2>
+            <div class="button" @click="change" />
+        </div>
+    </template>
+
+    <script>
+    export default {
+        data () {
+        return {
+        };
+        },
+
+        props:['value'],
+        model:{
+            prop:'value', // 需要重新定义的 prop
+            event:'close' // 需要重新定义的 event
+        },
+        methods: {
+            change() {
+                if (this.i == undefined) {
+                this.i = 0
+                }
+                this.i += 100    
+                this.$emit('close' , this.i + this.value)
+            }
+        }
+    }
+    </script>
+    <style lang='scss'>
+        .button {
+            width: 100px;
+            height: 30px;
+            background: #103090;
+        }
+    </style>
+```
+> 使用方法
+```
+    <bindc v-model='data' />
+```
 --------
 # require.context() 自动实现Vuex的注入
 ```

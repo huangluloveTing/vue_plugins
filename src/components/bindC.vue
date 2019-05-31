@@ -1,4 +1,4 @@
-<!--  -->
+<!-- customModel.vue  组件-->
 <template>
     <div>
         <h1> v-model 自定义 事件</h1>
@@ -19,18 +19,6 @@ export default {
         prop:'value',
         event:'close'
     },
-    components: {
-    },
-
-    created () {
-    },
-
-    computed: {
-    },
-
-    mounted() {
-    },
-
     methods: {
         change() {
             if (this.i == undefined) {
