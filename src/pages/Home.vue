@@ -1,20 +1,13 @@
 <!--  -->
 <template>
-    <div> this is home page 
-        <h1> {{ input }} </h1>
-      <div style="background:#ff0;width:20vw;height:10vw" @click="toDetail"> detail </div>
-      <div style="background:#f0f;width:20vw;height:10vw" @click="postInfo"> post </div>
-      <div style="background:#f3f;width:20vw;height:10vw" @click="toOrderList"> orderlist </div>
-      <div style="background:#f5f;width:20vw;height:10vw" @click="toSetting"> setting </div>
-      <div style="background:#f7f;width:20vw;height:10vw" @click="confirm"> confirm </div>
-      <div style="background:#f6f;width:20vw;height:10vw" @click="alert"> alert </div>
-      <div style="background:#f6f;width:20vw;height:10vw" @click="loading"> loading </div>
-      <div style="background:#f8f;width:20vw;height:10vw" @click="toast"> success </div>
-      <div style="background:#f9f;width:20vw;height:10vw" @click="toast_warn"> warn </div>
-      <div style="background:#f0f;width:20vw;height:10vw" @click="toast_fail"> fail </div>
-      <!-- <loading /> -->
-      <doublebind v-model='god'></doublebind>
-    </div>
+    <page title="订单" showHeader>
+        <bottomtab slot="bottom" @bottomClick='bottomClick'/>
+        <div slot="body" class="home-body">
+          <keep-alive>
+            <router-view />
+          </keep-alive>
+        </div>
+    </page>
 </template>
 
 <script>
@@ -25,7 +18,7 @@ export default {
     data () {
       return {
         input:'',
-        god:'good'
+        title:'首页',
       };
     },
 
@@ -34,59 +27,37 @@ export default {
     },
 
     created () {
+      console.log('home created')
     },
 
     computed: {
     },
-    watch:{
-      god(v , ol) {
-        console.log('good change' + 'new : ' + v + '---> old : ' + ol)
-      }
-    },
     methods: {
-      toDetail() {
-        this.$router.push('/detail')
-      },
-      postInfo() {
-        this.input = 'loading'
-        api.Post('/commit' , {name:'huanglu' ,age:45}).then(res => {
-          console.log(res)
-          this.input = JSON.stringify(res) + ' / '+ this.input
-        }).catch(error => {
-          this.input = JSON.stringify(error)
-        })
-      },
-      toOrderList() {
-        this.$router.push('/orderList')
-      },
-      toSetting() {
-        this.$router.push('/setting')
-      },
-      confirm() {
-        this.$dialog.confirm('tisp' , 'sfahfa')
-      },
-      alert() {
-        this.$dialog.alert('tisp' , 'sfahfa')
-      },
-      loading() {
-          this.$loading.show('拼命加载中...')
-          setTimeout(() => {
-              this.$loading.hidden()
-              this.$dialog.alert('提示' , '加载完毕！')
-          }, 1000);
-      },
-      toast() {
-        this.$toast.success('12333' , 1000)
-      },
-      toast_warn() {
-        this.$toast.warn('哈哈哈哈哈哈' , 3000)
-      },
-      toast_fail(){
-        this.$toast.fail('哈哈哈哈哈哈' , 5000)
+      bottomClick(order) {
+        console.log('click bottom tab')
+        switch (order) {
+          case '1':
+            this.$router.push('cart')
+            break;
+          case '2':
+            this.$router.push('shop')
+            break;
+          case '3':
+            this.$router.push('terminal')
+            break;
+          case '4':
+            this.$router.push('person')
+            break;
+          default:
+            console.log('default')
+            break;
+        }
       }
     }
 }
 </script>
 <style scoped>
-
+  .home-body {
+    padding-bottom: 55px;
+  }
 </style>

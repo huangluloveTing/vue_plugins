@@ -79,6 +79,7 @@ export default {
         .center {
             flex: 1;
             overflow: auto;
+            background: $c_primary_bg1;
         }
         .left-drawer {
             position: fixed;

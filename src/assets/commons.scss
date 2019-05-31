@@ -13,3 +13,11 @@ $c_primary_seprate: #DDDDDD;
 @function r_px($px) {
     @return $px / $size_width * 100vw;
 }
+
+// 字体渐变
+@mixin textGradinet($position:left , $start:#FFA600 , $end:#FF7527) {
+    background: -webkit-linear-gradient($position, $start , $end);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}

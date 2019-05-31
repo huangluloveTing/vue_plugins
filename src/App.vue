@@ -11,12 +11,12 @@ export default {
   beforeCreate() {
   },
   watch: {
-    '$route':{
-      handler:function($new , $old) {
-        console.log('router go ')
-        console.log($new , $old)
-      }
-    }
+    // '$route':{
+    //   handler:function($new , $old) {
+    //     console.log('router go ')
+    //     console.log($new , $old)
+    //   }
+    // }
   }
 }
 </script>

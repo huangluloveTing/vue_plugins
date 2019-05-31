@@ -4,15 +4,40 @@ const Home = () => import('../pages/Home.vue')
 const Detail = () => import('../pages/Detail.vue')
 const OrderList = () => import('../pages/OrderList.vue')
 const SettingPage = () => import('../pages/setting.vue')
+const cart = () => import('../pages/cart.vue')
+const terminal = () => import('../pages/TerminalPage.vue')
+const shop = () => import('../pages/shop.vue')
+const person = () => import('../pages/person.vue')
+
 Vue.use(Router)
 
 export default new Router({
   mode:'hash',
   routes: [
+    { path: '/', redirect: { name: 'home' }},
     {
-      path: '/',
+      path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      children:[
+        {
+          path: '/cart',
+          name: 'cart',
+          component: cart
+        },{
+          path: '/shop',
+          name: 'shop',
+          component: shop
+        },{
+          path: '/person',
+          name: 'person',
+          component: person
+        },{
+          path: '/terminal',
+          name: 'terminal',
+          component: terminal
+        },
+      ]
     },
     {
       path: '/detail',
@@ -31,7 +56,7 @@ export default new Router({
     },
     {
       path: '/*',
-      name: 'home',
+      name: 'other',
       component: Home
     }
   ]

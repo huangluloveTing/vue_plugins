@@ -14,11 +14,13 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import Loading from './plugins/loading'
 import Toast from './plugins/toast'
-
+import MyDirective from './directive/mymodel'
 Vue.config.productionTip = false  
 Vue.use(MyDialog)
+Vue.use(MintUI)
 Vue.use(Loading , {showMask:true})
 Vue.use(Toast , {position : 'top' , duration:20000})
+Vue.use(MyDirective)
 
 /* eslint-disable no-new */
 new Vue({

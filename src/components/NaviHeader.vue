@@ -53,6 +53,7 @@ export default {
         align-items: center;
         background: #fff;
         z-index: 999;
+        height: r_px(40);
     }
     .title {
         position: absolute;
