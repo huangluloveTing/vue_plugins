@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <keep-alive>
     <router-view />
+    </keep-alive>
   </div>
 </template>
 
@@ -11,12 +13,15 @@ export default {
   beforeCreate() {
   },
   watch: {
-    // '$route':{
-    //   handler:function($new , $old) {
-    //     console.log('router go ')
-    //     console.log($new , $old)
-    //   }
-    // }
+    '$route'(next , pre) {
+      console.log('======= app router ========  ')
+      console.log(next)
+      console.log(pre)
+    }
+  },
+  mounted(){
+    console.log(this.$router)
+    console.log(this.$route)
   }
 }
 </script>

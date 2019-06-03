@@ -1,13 +1,11 @@
 <!--  -->
 <template>
-    <page title="订单" showHeader>
-        <bottomtab slot="bottom" @bottomClick='bottomClick'/>
-        <div slot="body" class="home-body">
-          <keep-alive>
-            <router-view />
-          </keep-alive>
-        </div>
-    </page>
+    <div>
+      <bottomtab slot="bottom" @bottomClick='bottomClick'/>
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </div>
 </template>
 
 <script>
@@ -29,7 +27,8 @@ export default {
     created () {
       console.log('home created')
     },
-
+    mounted() {
+    },
     computed: {
     },
     methods: {
@@ -53,6 +52,12 @@ export default {
             break;
         }
       }
+    },
+    beforeRouteEnter(to, from, next){
+     console.log('home === router to ====') 
+     console.log(to)
+     console.log(from)
+     next()
     }
 }
 </script>

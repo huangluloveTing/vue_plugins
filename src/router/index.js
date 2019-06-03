@@ -11,29 +11,30 @@ const person = () => import('../pages/person.vue')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode:'hash',
   routes: [
-    { path: '/', redirect: { name: 'home' }},
+    { path: '/', redirect: {name:'cart'}},
     {
       path: '/home',
       name: 'home',
       component: Home,
+      meta:{cache:true},
       children:[
         {
-          path: '/cart',
+          path: 'cart',
           name: 'cart',
           component: cart
         },{
-          path: '/shop',
+          path: 'shop',
           name: 'shop',
           component: shop
         },{
-          path: '/person',
+          path: 'person',
           name: 'person',
           component: person
         },{
-          path: '/terminal',
+          path: 'terminal',
           name: 'terminal',
           component: terminal
         },
@@ -61,3 +62,12 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log('global router ===')
+  console.log(to)
+  console.log(from)
+  next()
+})
+
+export default router;

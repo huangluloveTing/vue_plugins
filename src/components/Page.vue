@@ -3,12 +3,10 @@
     <div class="page">
         <naviheader v-if="showHeader" :title="title" :showBack='showBack'>
             <div slot="rightitems"><slot name="rightActions"></slot></div>
+            <div slot="left"><slot name="header-left"></slot></div>
         </naviheader>
-        <div class="center">
+        <div class="center" :class="showHeader ? 'headerShow' : ''">
             <slot name="body" />
-        </div>
-        <div class="bottom">
-            <slot name="bottom" />
         </div>
         <!-- 左抽屉 -->
         <div :class="{'left-drawer':true,'drawer-left-show':this.leftDrawer}">
@@ -71,15 +69,9 @@ export default {
 <style lang="scss" scoped>
     .page {
         width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-flow: column;
-        align-items: stretch;
-        justify-content: flex-start;
         .center {
-            flex: 1;
-            overflow: auto;
             background: $c_primary_bg1;
+            -webkit-overflow-scrolling:touch;
         }
         .left-drawer {
             position: fixed;
@@ -98,6 +90,9 @@ export default {
         }
         .drawer-right-show {
             transform: translateX(-100%)
+        }
+        .headerShow {
+            margin-top: r_px(40);
         }
     }
 </style>

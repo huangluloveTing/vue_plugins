@@ -4,6 +4,28 @@
 
 const path = require('path')
 
+var os = require('os')
+
+/*
+获取本机IP
+*/
+function getIPAdress() {
+  let localIPAddress = "";
+  let interfaces = os.networkInterfaces();
+  for (let devName in interfaces) {
+      let iface = interfaces[devName];
+      for (let i = 0; i < iface.length; i++) {
+          let alias = iface[i];
+          if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+              localIPAddress = alias.address;
+          }
+      }
+  }
+  return localIPAddress;
+}
+
+let host = getIPAdress()
+
 module.exports = {
   dev: {
 
@@ -22,9 +44,9 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: host, // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

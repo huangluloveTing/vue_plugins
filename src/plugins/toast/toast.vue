@@ -92,6 +92,7 @@ export default {
 <style lang="scss" scoped>
     .toast-container {
         position: fixed;
+        z-index: 9999;
         .toast-content {
             display: flex;
             flex-flow: column nowrap;

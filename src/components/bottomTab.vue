@@ -40,8 +40,7 @@ export default {
         selected: {
             handler(newl){
                 this.$emit('bottomClick' , newl)
-            },
-            immediate:true
+            }
         }
     },
 
@@ -56,6 +55,7 @@ export default {
     .bottom-container {
         position: fixed;
         bottom: 0;left: 0;right: 0;
+        z-index: 1000;
     }
     .item-container {
         width: 25%;
@@ -67,5 +67,12 @@ export default {
     }
     .mint-tab-item {
         color: #AAAAAA;
+    }
+    .mint-tab-item-icon {
+        height: r_px(22);
+        width: r_px(22);
+        i {
+            font-size: r_px(22);
+        }
     }
 </style>

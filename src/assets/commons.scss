@@ -14,10 +14,28 @@ $c_primary_seprate: #DDDDDD;
     @return $px / $size_width * 100vw;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 // 字体渐变
 @mixin textGradinet($position:left , $start:#FFA600 , $end:#FF7527) {
     background: -webkit-linear-gradient($position, $start , $end);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent; 
+}
+
+@mixin lineText() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin textLineNumber($lines:1) {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:$lines;
 }

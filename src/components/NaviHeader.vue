@@ -1,6 +1,6 @@
 <template>
     <div class="navi-header">
-        <i class="icon iconfont icon-left left" v-if="showBack" @click="leftBack"></i>
+        <slot name='left'><i class="icon iconfont icon-left left" v-if="showBack" @click="leftBack"></i></slot>
         <div class="title"><slot name='title'> <span> {{title}}  </span> </slot></div>
         <slot name='rightitems'></slot>
     </div>
@@ -45,8 +45,8 @@ export default {
 </script>
 <style lang="scss" scoped>
     .navi-header {
-        position: relative;
-        padding: r_px(10) r_px(8);
+        position: fixed;
+        top:0;left: 0;right: 0;
         display: flex;
         flex-flow: row;
         justify-content: space-between;
@@ -54,6 +54,7 @@ export default {
         background: #fff;
         z-index: 999;
         height: r_px(40);
+        line-height: r_px(40);
     }
     .title {
         position: absolute;

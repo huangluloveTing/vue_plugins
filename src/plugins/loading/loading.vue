@@ -54,6 +54,7 @@ export default {
             position: fixed;
             top: 0;left: 0;right: 0;bottom: 0;
             background: $toask-mask;
+            z-index: 99999;
         }
         .toast-main {
             position: fixed;
@@ -68,6 +69,7 @@ export default {
             border-radius: 5px;
             background-clip: border-box;
             box-shadow: 0px 0px 1px 2px #f5f5f5;
+            z-index: 99999;
             span {
                 position: absolute;
                 bottom: 0;

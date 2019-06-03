@@ -15,13 +15,19 @@ import 'mint-ui/lib/style.css'
 import Loading from './plugins/loading'
 import Toast from './plugins/toast'
 import MyDirective from './directive/mymodel'
+import request from './api/request'
+
 Vue.config.productionTip = false  
 Vue.use(MyDialog)
 Vue.use(MintUI)
 Vue.use(Loading , {showMask:true})
-Vue.use(Toast , {position : 'top' , duration:20000})
+Vue.use(Toast , {position : 'center' , duration:2000})
 Vue.use(MyDirective)
 
+console.log('vue version')
+console.log(Vue.version)
+
+Vue.prototype.$api = request
 /* eslint-disable no-new */
 new Vue({
   el: '#root',

@@ -108,6 +108,7 @@ export default {
         position: fixed;
         top: 0;left: 0;right: 0;bottom: 0;
         background: $alert_bg;
+        z-index: 9999;
     }
         // animation: name duration timing-function delay iteration-count direction fill-mode;
     .alert-content {
@@ -121,6 +122,7 @@ export default {
         flex-flow: column nowrap;
         align-items: stretch;
         width: 75%;
+        z-index: 9999;
         .title {
             color: $c_title;
             font-size: px(17);

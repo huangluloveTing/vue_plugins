@@ -6,9 +6,7 @@ export default {
     Get: (path , params) => {
         let promise = new Promise(async (resolve , reject ) => {
             try {
-                let res = await axios.get(`/api/${path}` ,{
-                    headers:{'ktype':'ios'}
-                })
+                let res = await axios.get(`${path}`)
                 resolve(res.data)
             } catch (error) {
                 console.log(error)
@@ -20,8 +18,8 @@ export default {
     Post: (path , params) => {
         let promise = new Promise(async (resolve , reject ) => {
             try {
-                let res = await axios.post(`/api/${path}` , params , {
-                    headers:{'ktype':'ios' , 'byby':'byby'}
+                let res = await axios.post(`${path}` , params , {
+                    headers:{'type':'ios'}
                 })
                 resolve(res.data)
             } catch (error) {
